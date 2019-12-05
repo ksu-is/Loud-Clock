@@ -1,16 +1,36 @@
-minutes = 50
-hours = 7
-seconds = 30
+
+import datetime
 import time
+from os import system
+
+
 while True:
-    print(str(hours) + ":" + str(minutes) + ":" + str(seconds))
-    seconds = seconds + 1
-    time.sleep(1)
-    if seconds == 60:
-        seconds = 1
-        minutes = minutes + 1
-    if minutes == 60:
-        hours = hours + 1
-        minutes = 1
-    if hours == 13:
-        hours = 1
+	s = "# The real time clock!\n\nEver wanted to know what the time is? Well, your journey is about to end!\n\n**The time is "
+	t = datetime.datetime.now().strftime('%b %d, %Y, %H:%M') + "**"
+	with open("readme.md", "w") as f:
+		f.write(s + t)
+		
+	system("git add .")
+	system("git commit -m \"Update time\"")
+	system("git push origin master")
+	time.sleep(59)
+if __name__ == '__main__':
+    import os
+    from gtts import gTTS
+    Text = ("The time is")
+
+    print("please wait...processing")
+    TTS = gTTS(text=Text, lang='en')
+
+    # Save to mp3 in current dir.
+    TTS.save("voice.mp3")
+
+    # Plays the mp3 using the default app on your system
+    # that is linked to mp3s.
+    os.system("start voice.mp3")
+    tick()
+    root.mainloop()
+
+ 
+
+

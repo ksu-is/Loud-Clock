@@ -24,22 +24,7 @@ while True:
     # Draw a rectangle around recognized faces 
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (50, 50, 200), 2)
-        minutes = 50
-        hours = 7
-        seconds = 30
-        import time
-        while True:
-            print(str(hours) + ":" + str(minutes) + ":" + str(seconds))
-            seconds = seconds + 1
-            time.sleep(1)
-            if seconds == 60:
-                seconds = 1
-            minutes = minutes + 1
-            if minutes == 60:
-                hours = hours + 1
-                minutes = 1
-            if hours == 13:
-                hours = 1
+  
 
     # Display the resulting frame
     cv2.imshow('Video', frame)
