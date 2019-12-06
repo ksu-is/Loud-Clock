@@ -1,4 +1,3 @@
-
 import cv2
 import sys
 
@@ -20,15 +19,36 @@ while True:
         minNeighbors=5,
         minSize=(35, 35)
     )
+    if len(faces) == 1:
+         
+        import pygame
+        import datetime
+#pulling time
+        time = datetime.datetime.now().time()
+        timeStrOld = str(time)
+        timeStrNew = timeStrOld[0:3]+timeStrOld[3:6]+timeStrOld[6:8]
+        print(timeStrNew)
 
-    # Draw a rectangle around recognized faces 
-    for (x, y, w, h) in faces:
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (50, 50, 200), 2)
+        if __name__ == '__main__':
+
+            import os
+            from gtts import gTTS
+    
+            Text = ("The time is" + timeStrNew)
+
+ 
+            TTS = gTTS(text=Text, lang='en')
+
+    # Save to mp3
+            TTS.save("voice.mp3")
+
+    # Plays the mp3 
   
-
-    # Display the resulting frame
-    cv2.imshow('Video', frame)
-
-    # Exit the camera view
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        sys.exit()
+            os.system("start voice.mp3") 
+            import time
+            time.sleep(5)
+        else:
+            print("no faces but still success")
+    continue    
+    
+    
