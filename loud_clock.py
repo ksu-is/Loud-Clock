@@ -29,6 +29,9 @@ while True:
         timeStrNew = timeStrOld[0:3]+timeStrOld[3:6]+timeStrOld[6:8]
         print(timeStrNew)
 
+        
+
+        
         if __name__ == '__main__':
 
             import os
@@ -38,17 +41,27 @@ while True:
 
  
             TTS = gTTS(text=Text, lang='en')
+    
 
+    
     # Save to mp3
             TTS.save("voice.mp3")
 
     # Plays the mp3 
   
             os.system("start voice.mp3") 
+    #gui
+            import PySimpleGUI as sg
+            
+
+            layout = [ [sg.Text(timeStrNew)] ]
+
+            window = sg.Window('Time').Layout(layout)
+            window.Read()
+            
+            window.Close()
             import time
             time.sleep(5)
-        else:
-            print("no faces but still success")
     continue    
     
     
